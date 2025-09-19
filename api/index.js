@@ -4,12 +4,12 @@ export default async function handler(req, res) {
   try {
     const rawData = await fs.readJson("products.json");
 
-    // सिर्फ product वाले ids
+    // सिर्फ Product IDs
     const productsOnly = rawData.filter(
       (p) => p.id && p.id.startsWith("gid://shopify/Product/")
     );
 
-    // सिर्फ ACTIVE और DRAFT वाले
+    // सिर्फ ACTIVE और DRAFT
     const filteredProducts = productsOnly.filter((p) =>
       ["ACTIVE", "DRAFT"].includes((p.status || "").toUpperCase())
     );
