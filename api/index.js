@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       (p) => p.id && p.id.startsWith("gid://shopify/Product/")
     );
 
-    // सिर्फ ACTIVE और DRAFT
+    // ACTIVE और DRAFT products
     const filteredProducts = productsOnly.filter((p) =>
       ["ACTIVE", "DRAFT"].includes((p.status || "").toUpperCase())
     );
@@ -19,6 +19,7 @@ export default async function handler(req, res) {
       products: filteredProducts,
     });
   } catch (err) {
-    res.status(500).json({ error: "❌ Failed to load products.json" });
+    console.error("Error reading products.json:", err);
+    res.status(500).json({ error: "Failed to load products.json" });
   }
 }
