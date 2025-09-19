@@ -1,3 +1,13 @@
-"scripts": {
-  "start": "node api/index.js"
-}
+{
+    "name": "shopify-products-render",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+      "start": "node api/index.js"
+    },
+    "dependencies": {
+      "express": "^4.19.2",
+      "fs-extra": "^11.1.1"
+    }
+  }
+  
